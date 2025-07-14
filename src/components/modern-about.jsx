@@ -9,8 +9,8 @@ export default function ModernAbout() {
   const stats = [
     { number: "2.5+", label: "Years Experience", icon: Zap },
     { number: "10+", label: "Projects Completed", icon: Code },
-    { number: "5+", label: "Happy Clients", icon: Users },
-    { number: "20+", label: "Projects Deployed", icon: Smartphone },
+    { number: "08+", label: "Projects Deployed", icon: Smartphone },
+    { number: "05+", label: "Happy Clients", icon: Users },
   ];
 
   const containerVariants = {
@@ -71,7 +71,7 @@ export default function ModernAbout() {
               </span>
             </h2>
             <p className="text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
-              A passionate Frontend Engineer focused on building intuitive,
+              A passionate Web Engineer focused on building intuitive,
               high-performance web applications. I thrive in collaborative
               teams, enjoy solving complex UI challenges, and am always eager to
               explore new technologies that enhance user experience.
@@ -126,22 +126,20 @@ export default function ModernAbout() {
               </h3>
               <div className="space-y-6 text-gray-400 leading-relaxed">
                 <p>
-                  With 3+ years of experience in mobile development, I
-                  specialize in Flutter and have successfully delivered 15+
-                  applications across various industries including healthcare,
-                  government, and fitness technology.
+                  With over 2.5 years of experience in frontend development, I
+                  specialize in React and have delivered 10+ applications across
+                  sectors such as government, healthcare, and fitness tech.
                 </p>
                 <p>
-                  I'm passionate about writing clean, maintainable code and
-                  following best practices. My experience includes working with
-                  cross-functional teams, participating in code reviews, and
-                  mentoring junior developers.
+                  I’m dedicated to writing clean, maintainable code and adhering
+                  to best practices. I’ve collaborated with cross-functional
+                  teams, contributed to code reviews, and mentored junior
+                  developers.
                 </p>
                 <p>
-                  I stay current with the latest Flutter updates and mobile
-                  development trends, and I'm always looking for opportunities
-                  to grow and contribute to meaningful projects that make a
-                  positive impact.
+                  I actively stay updated with the latest frontend trends and
+                  continuously seek opportunities to grow while contributing to
+                  impactful, user-focused projects.
                 </p>
               </div>
             </div>
@@ -163,14 +161,20 @@ export default function ModernAbout() {
                   aria-labelledby="tech-stack-title"
                 >
                   {[
-                    "Flutter",
-                    "Dart",
-                    "Firebase",
-                    "REST APIs",
+                    "React",
+                    "Next.js",
+                    "Tailwind CSS",
+                    "TypeScript",
                     "Git",
                     "Figma",
-                    "Android",
-                    "iOS",
+                    "Node.js",
+                    "Express",
+                    "MongoDB",
+                    "PostgreSQL",
+                    "Docker",
+                    "AWS",
+                    "CI/CD",
+                    "GitLab CI/CD",
                   ].map((tech, index) => (
                     <motion.li
                       key={index}
