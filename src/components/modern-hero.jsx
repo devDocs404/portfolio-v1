@@ -10,6 +10,7 @@ import {
 import { Button } from "@/components/ui/button";
 import profileWebp from "../assets/Shaik.webp";
 import profilePng from "../assets/Shaik.png";
+import resumePDF from "../assets/resume/Muzakkir(2025-v1) - Resume_Template.docx.pdf";
 
 export default function ModernHero() {
   const containerVariants = {
@@ -50,7 +51,7 @@ export default function ModernHero() {
       {/* Grid Pattern */}
       <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:50px_50px]"></div>
 
-      <div className="container mx-auto px-6 pt-32 pb-16 relative z-10">
+      <div className="container mx-auto px-20 pt-32 pb-16 relative z-10">
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -108,7 +109,7 @@ export default function ModernHero() {
                 aria-label="Download my resume"
                 asChild
               >
-                <a href="#" download>
+                <a href={resumePDF} download>
                   Download Resume
                 </a>
               </Button>
