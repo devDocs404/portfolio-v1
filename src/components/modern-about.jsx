@@ -1,6 +1,20 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { Code, Smartphone, Zap, Users } from "lucide-react";
+import {
+  SiReact,
+  SiNextdotjs,
+  SiTailwindcss,
+  SiTypescript,
+  SiGit,
+  SiFigma,
+  SiNodedotjs,
+  SiExpress,
+  SiMongodb,
+  SiPostgresql,
+  SiDocker,
+} from "react-icons/si";
+import { FaAws, FaGitlab, FaTools } from "react-icons/fa";
 
 export default function ModernAbout() {
   const ref = useRef(null);
@@ -34,6 +48,26 @@ export default function ModernAbout() {
       },
     },
   };
+
+  // Tech stack with icons and brand colors
+  const techStackTop = [
+    { name: "React", icon: SiReact, color: "#61DAFB" },
+    { name: "Next.js", icon: SiNextdotjs, color: "#000000" },
+    { name: "Tailwind CSS", icon: SiTailwindcss, color: "#06B6D4" },
+    { name: "TypeScript", icon: SiTypescript, color: "#3178C6" },
+    { name: "Git", icon: SiGit, color: "#F05032" },
+    { name: "Figma", icon: SiFigma, color: "#F24E1E" },
+    { name: "Node.js", icon: SiNodedotjs, color: "#339933" },
+  ];
+  const techStackBottom = [
+    { name: "Express", icon: SiExpress, color: "#000000" },
+    { name: "MongoDB", icon: SiMongodb, color: "#47A248" },
+    { name: "PostgreSQL", icon: SiPostgresql, color: "#4169E1" },
+    { name: "Docker", icon: SiDocker, color: "#2496ED" },
+    { name: "AWS", icon: FaAws, color: "#FF9900" },
+    { name: "CI/CD", icon: FaTools, color: "#4B32C3" },
+    { name: "GitLab CI/CD", icon: FaGitlab, color: "#FC6D26" },
+  ];
 
   return (
     <section
@@ -151,41 +185,65 @@ export default function ModernAbout() {
                 transition={{ duration: 0.3 }}
               >
                 <h4
-                  className="text-xl font-semibold text-white mb-6"
+                  className="text-xl font-semibold text-white mb-6 text-center"
                   id="tech-stack-title"
                 >
                   Tech Stack
                 </h4>
-                <ul
-                  className="grid grid-cols-2 gap-4"
-                  aria-labelledby="tech-stack-title"
-                >
-                  {[
-                    "React",
-                    "Next.js",
-                    "Tailwind CSS",
-                    "TypeScript",
-                    "Git",
-                    "Figma",
-                    "Node.js",
-                    "Express",
-                    "MongoDB",
-                    "PostgreSQL",
-                    "Docker",
-                    "AWS",
-                    "CI/CD",
-                    "GitLab CI/CD",
-                  ].map((tech, index) => (
-                    <motion.li
-                      key={index}
-                      className="bg-white/5 rounded-lg p-3 text-center text-gray-300 hover:bg-white/10 transition-colors focus:outline-none focus:ring-2 focus:ring-cyan-400"
-                      whileHover={{ scale: 1.05 }}
-                      tabIndex={0}
-                    >
-                      {tech}
-                    </motion.li>
-                  ))}
-                </ul>
+                <div className="overflow-hidden w-full">
+                  {/* Top Row: scrolls left */}
+                  <div className="relative py-2">
+                    <div className="flex gap-6 animate-marquee whitespace-nowrap">
+                      {techStackTop.concat(techStackTop).map((tech, index) => (
+                        <div
+                          key={"top-" + index}
+                          className="bg-white/5 rounded-lg px-6 py-3 text-center text-gray-300 hover:bg-white/10 transition-colors focus:outline-none focus:ring-2 focus:ring-cyan-400 flex flex-col items-center gap-2 mx-2 min-w-[120px]"
+                          tabIndex={0}
+                          style={{ cursor: "pointer" }}
+                        >
+                          <tech.icon
+                            size={32}
+                            color={tech.color}
+                            aria-label={tech.name}
+                          />
+                          <span
+                            className="mt-1 text-base font-medium"
+                            style={{ color: tech.color }}
+                          >
+                            {tech.name}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                  {/* Bottom Row: scrolls right */}
+                  <div className="relative py-2">
+                    <div className="flex gap-6 animate-marquee-reverse whitespace-nowrap">
+                      {techStackBottom
+                        .concat(techStackBottom)
+                        .map((tech, index) => (
+                          <div
+                            key={"bottom-" + index}
+                            className="bg-white/5 rounded-lg px-6 py-3 text-center text-gray-300 hover:bg-white/10 transition-colors focus:outline-none focus:ring-2 focus:ring-cyan-400 flex flex-col items-center gap-2 mx-2 min-w-[120px]"
+                            tabIndex={0}
+                            style={{ cursor: "pointer" }}
+                          >
+                            <tech.icon
+                              size={32}
+                              color={tech.color}
+                              aria-label={tech.name}
+                            />
+                            <span
+                              className="mt-1 text-base font-medium"
+                              style={{ color: tech.color }}
+                            >
+                              {tech.name}
+                            </span>
+                          </div>
+                        ))}
+                    </div>
+                  </div>
+                </div>
               </motion.div>
             </div>
           </motion.div>
