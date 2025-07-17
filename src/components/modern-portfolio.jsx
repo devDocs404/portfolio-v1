@@ -2,6 +2,18 @@ import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
 import { Github, Play, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import stockfolio from "../assets/stockfolio.png";
+import {
+  SiReact,
+  SiJavascript,
+  SiApachenetbeanside,
+  SiStripe,
+  SiAiohttp,
+  SiPython,
+  SiDatabricks,
+  SiNodedotjs,
+} from "react-icons/si";
+import { FaDatabase, FaRobot } from "react-icons/fa";
 
 export default function ModernPortfolio() {
   const ref = useRef(null);
@@ -10,46 +22,64 @@ export default function ModernPortfolio() {
 
   const projects = [
     {
-      title: "GIFT Utilities",
+      title: "Property Management System",
       description:
-        "Led the development of a government utility management system serving 10,000+ users. Implemented secure payment processing and real-time billing features, resulting in 40% improved customer satisfaction.",
-      category: "Government Tech • Team Lead",
-      tags: ["Flutter", "Firebase", "REST API", "Payment Gateway"],
-      image: "/placeholder.svg?height=400&width=300",
+        "Led the development of a property management system serving 1,000+ users. Implemented secure payment processing and real-time billing features, resulting in 40% improved customer satisfaction.",
+      category: "Web Development • Team Lead",
+      tags: ["React", "JavaScript", "REST API", "Payment Gateway"],
+      // image: property,
       color: "from-orange-400 to-red-500",
-      stats: { users: "10K+", rating: "4.8" },
+      stats: { users: "6000+", rating: "4.8" },
       achievements: [
-        "40% improved customer satisfaction",
-        "Zero security incidents",
+        "Responsive UI",
+        "Full Stack caching",
+        "Real-time updates",
+        "Live data using websocket",
       ],
     },
     {
-      title: "Enbioals Healthcare",
+      title: "StockFolio",
       description:
-        "Developed an AI-powered healthcare platform that processes complex health data. Collaborated with data scientists to implement machine learning features, achieving 95% accuracy in health recommendations.",
-      category: "Healthcare • Full Stack",
-      tags: ["Flutter", "AI/ML", "Healthcare API", "Data Analytics"],
-      image: "/placeholder.svg?height=400&width=300",
+        "Led the development of a stock portfolio management system serving 10,000+ users. Implemented secure payment processing and real-time billing features, resulting in 40% improved customer satisfaction.",
+      category: "Stock Portfolio Platform • Web Development",
+      tags: ["React", "JavaScript", "REST API", "Payment Gateway"],
+      image: stockfolio,
+      color: "from-orange-400 to-red-500",
+      stats: { users: "6000+", rating: "4.8" },
+      achievements: [
+        "Live data using websocket",
+        "Real-time updates",
+        "Full Stack caching",
+        "Responsive UI",
+      ],
+    },
+    {
+      title: "Predict",
+      description:
+        "Developed an AI-powered property valuation model that processes complex features of a property and predicts its value. Collaborated with data scientists to implement machine learning features, achieving 95% accuracy in valuation predictions.",
+      category: "Web Development • Machine Learning",
+      tags: ["React", "JavaScript", "AI/ML", "Stock API", "Data Analytics"],
+      // image: predict,
       color: "from-cyan-400 to-blue-500",
       stats: { users: "5K+", rating: "4.9" },
-      achievements: ["95% ML accuracy", "HIPAA compliant"],
+      achievements: ["95% ML accuracy", "Handling Large Data"],
     },
-    {
-      title: "Virtual Ref Fitness",
-      description:
-        "Built a computer vision-powered fitness app using TensorFlow Lite. Optimized real-time pose detection algorithms, reducing processing time by 60% while maintaining 90% accuracy.",
-      category: "Fitness Tech • Technical Lead",
-      tags: [
-        "Flutter",
-        "Computer Vision",
-        "TensorFlow Lite",
-        "Real-time Processing",
-      ],
-      image: "/placeholder.svg?height=400&width=300",
-      color: "from-green-400 to-cyan-500",
-      stats: { users: "15K+", rating: "4.7" },
-      achievements: ["60% faster processing", "90% pose accuracy"],
-    },
+    // {
+    //   title: "Virtual Ref Fitness",
+    //   description:
+    //     "Built a computer vision-powered fitness app using TensorFlow Lite. Optimized real-time pose detection algorithms, reducing processing time by 60% while maintaining 90% accuracy.",
+    //   category: "Fitness Tech • Technical Lead",
+    //   tags: [
+    //     "Flutter",
+    //     "Computer Vision",
+    //     "TensorFlow Lite",
+    //     "Real-time Processing",
+    //   ],
+    //   image: "/placeholder.svg?height=400&width=300",
+    //   color: "from-green-400 to-cyan-500",
+    //   stats: { users: "15K+", rating: "4.7" },
+    //   achievements: ["60% faster processing", "90% pose accuracy"],
+    // },
   ];
 
   const containerVariants = {
@@ -72,6 +102,17 @@ export default function ModernPortfolio() {
         ease: [0.6, -0.05, 0.01, 0.99],
       },
     },
+  };
+
+  // Tag icon mapping
+  const tagIconMap = {
+    React: SiReact,
+    JavaScript: SiJavascript,
+    "REST API": SiAiohttp,
+    "Payment Gateway": SiStripe,
+    "AI/ML": FaRobot,
+    "Stock API": SiDatabricks,
+    "Data Analytics": FaDatabase,
   };
 
   return (
@@ -154,7 +195,10 @@ export default function ModernPortfolio() {
                       <div className="text-2xl font-bold text-white">
                         {project.stats.users}
                       </div>
-                      <div className="text-sm text-gray-400">Active Users</div>
+                      <div className="text-sm text-gray-400">
+                        {/* {project.stats.users} */}
+                        Stats
+                      </div>
                     </div>
                     <div>
                       <div className="text-2xl font-bold text-white">
@@ -169,15 +213,29 @@ export default function ModernPortfolio() {
                     className="flex flex-wrap gap-2 mb-8"
                     aria-label="Project tags"
                   >
-                    {project.tags.map((tag, tagIndex) => (
-                      <li
-                        key={tagIndex}
-                        className="bg-white/10 text-gray-300 px-3 py-1 rounded-full text-sm border border-white/20 list-none"
-                        tabIndex={0}
-                      >
-                        {tag}
-                      </li>
-                    ))}
+                    {project.tags.map((tag, tagIndex) => {
+                      const Icon = tagIconMap[tag] || SiNodedotjs;
+                      return (
+                        <motion.li
+                          key={tagIndex}
+                          className="bg-white/10 text-gray-300 px-3 py-1 rounded-full text-sm border border-white/20 list-none flex items-center gap-2 tag-animated"
+                          tabIndex={0}
+                          initial={{ opacity: 0, scale: 0.9 }}
+                          animate={{ opacity: 1, scale: 1 }}
+                          transition={{ duration: 0.4, delay: tagIndex * 0.1 }}
+                          whileHover={{
+                            scale: 1.08,
+                            boxShadow: "0 2px 8px rgba(0,255,255,0.15)",
+                          }}
+                        >
+                          <Icon
+                            className="inline-block text-cyan-400"
+                            size={16}
+                          />
+                          {tag}
+                        </motion.li>
+                      );
+                    })}
                   </ul>
 
                   {/* Achievements (if any) */}
@@ -195,7 +253,7 @@ export default function ModernPortfolio() {
                   )}
 
                   {/* Action Buttons */}
-                  <div className="flex gap-4">
+                  {/* <div className="flex gap-4">
                     <Button
                       className="bg-gradient-to-r from-cyan-500 to-purple-600 hover:from-cyan-600 hover:to-purple-700 text-white border-0 rounded-full px-6 focus:outline-none focus:ring-2 focus:ring-cyan-400"
                       aria-label={`Live demo of ${project.title}`}
@@ -211,7 +269,7 @@ export default function ModernPortfolio() {
                       <Github className="w-4 h-4 mr-2" aria-hidden="true" />
                       View Code
                     </Button>
-                  </div>
+                  </div> */}
                 </div>
 
                 {/* Project Image */}
@@ -224,31 +282,66 @@ export default function ModernPortfolio() {
                   aria-hidden="true"
                 >
                   <div className="relative bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl rounded-3xl border border-white/20 p-8 hover:border-white/30 transition-all duration-500">
-                    {/* Phone Mockup */}
-                    <div className="relative mx-auto w-64 h-96 bg-black rounded-[3rem] border-4 border-gray-700 shadow-2xl overflow-hidden">
-                      <div className="absolute top-6 left-1/2 transform -translate-x-1/2 w-16 h-1 bg-gray-600 rounded-full"></div>
-                      <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 w-12 h-12 border-2 border-gray-600 rounded-full"></div>
-
-                      {/* Screen Content */}
-                      <div className="mt-12 mb-16 mx-4 bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl h-full flex items-center justify-center relative overflow-hidden">
+                    {/* Browser Window Mockup */}
+                    <div className="relative mx-auto w-96 h-64 bg-black rounded-2xl border-2 border-gray-700 shadow-2xl overflow-hidden flex flex-col">
+                      {/* Browser Top Bar */}
+                      <div className="flex items-center gap-2 px-4 py-2 bg-gray-900/80 border-b border-gray-700 rounded-t-2xl">
+                        <span className="w-3 h-3 bg-red-500 rounded-full"></span>
+                        <span className="w-3 h-3 bg-yellow-400 rounded-full"></span>
+                        <span className="w-3 h-3 bg-green-500 rounded-full"></span>
+                        <span className="ml-4 text-xs text-gray-400 truncate">
+                          {project.title}
+                        </span>
+                      </div>
+                      {/* Browser Content Area */}
+                      <div className="flex-1 flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-gray-800 to-gray-900">
                         <div
                           className={`absolute inset-0 bg-gradient-to-br ${project.color} opacity-20`}
                         ></div>
-                        <div className="text-center z-10">
-                          <div
-                            className={`w-16 h-16 bg-gradient-to-r ${project.color} rounded-2xl mx-auto mb-4 flex items-center justify-center`}
-                          >
-                            <span className="text-white font-bold text-xl">
-                              {project.title.charAt(0)}
-                            </span>
+                        {project.title === "StockFolio" && project.image ? (
+                          <div className="relative flex flex-col items-center justify-center w-full h-full">
+                            {/* Glassy card for image */}
+                            <motion.div
+                              initial={{ opacity: 0, scale: 0.95 }}
+                              animate={{ opacity: 1, scale: 1 }}
+                              transition={{
+                                duration: 0.7,
+                                ease: [0.4, 0, 0.2, 1],
+                              }}
+                              className="relative bg-white/10 backdrop-blur-md rounded-2xl border border-cyan-400/30 shadow-2xl p-4 flex items-center justify-center max-w-xs w-full mx-auto"
+                              style={{ minHeight: "140px" }}
+                            >
+                              {/* Gradient overlay for depth */}
+                              <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-cyan-400/10 to-purple-400/10 pointer-events-none"></div>
+                              <img
+                                src={project.image}
+                                alt="StockFolio screenshot"
+                                className="relative z-10 rounded-xl shadow-lg max-h-32 object-contain border border-white/20 bg-black/30"
+                                style={{ width: "100%", height: "auto" }}
+                              />
+                              {/* Floating badge */}
+                              <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 bg-gradient-to-r from-cyan-500 to-purple-500 text-white text-xs font-semibold px-4 py-1 rounded-full shadow-lg border border-white/20 z-20">
+                                StockFolio
+                              </div>
+                            </motion.div>
                           </div>
-                          <div className="text-white font-semibold">
-                            {project.title}
+                        ) : (
+                          <div className="text-center z-10">
+                            <div
+                              className={`w-16 h-16 bg-gradient-to-r ${project.color} rounded-2xl mx-auto mb-4 flex items-center justify-center`}
+                            >
+                              <span className="text-white font-bold text-xl">
+                                {project.title.charAt(0)}
+                              </span>
+                            </div>
+                            <div className="text-white font-semibold">
+                              {project.title}
+                            </div>
+                            <div className="text-gray-400 text-sm mt-2">
+                              {project.category}
+                            </div>
                           </div>
-                          <div className="text-gray-400 text-sm mt-2">
-                            {project.category}
-                          </div>
-                        </div>
+                        )}
                       </div>
                     </div>
 
@@ -288,7 +381,7 @@ export default function ModernPortfolio() {
           </div>
 
           {/* View All Projects Button */}
-          <motion.div variants={itemVariants} className="text-center mt-16">
+          {/* <motion.div variants={itemVariants} className="text-center mt-16">
             <Button
               className="bg-gradient-to-r from-purple-500 to-cyan-600 hover:from-purple-600 hover:to-cyan-700 text-white border-0 rounded-full px-8 py-6 text-lg font-semibold group focus:outline-none focus:ring-2 focus:ring-cyan-400"
               aria-label="View all projects"
@@ -299,7 +392,7 @@ export default function ModernPortfolio() {
                 aria-hidden="true"
               />
             </Button>
-          </motion.div>
+          </motion.div> */}
         </motion.div>
       </div>
     </section>
