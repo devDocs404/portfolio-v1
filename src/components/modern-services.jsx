@@ -9,11 +9,11 @@ export default function ModernServices() {
   const services = [
     {
       icon: Code,
-      title: "Mobile Development",
+      title: "Web Development",
       description:
-        "Expert in Flutter framework with deep understanding of Dart programming language and mobile app architecture.",
+        "Expert in React framework with deep understanding of JavaScript programming language and web app architecture.",
       features: [
-        "Flutter & Dart",
+        "React & JavaScript",
         "State Management (Bloc, Provider)",
         "Custom UI Components",
       ],
