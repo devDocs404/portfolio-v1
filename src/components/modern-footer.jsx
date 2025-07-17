@@ -55,7 +55,7 @@ export default function ModernFooter() {
                 transition={{ duration: 0.8, delay: 0.4 }}
                 viewport={{ once: true }}
               >
-                <Button
+                {/* <Button
                   className="bg-gradient-to-r from-cyan-500 to-purple-600 hover:from-cyan-600 hover:to-purple-700 text-white border-0 rounded-full px-8 py-6 text-lg font-semibold"
                   aria-label="Contact Me via Email"
                   asChild
@@ -64,12 +64,20 @@ export default function ModernFooter() {
                     <Mail className="w-5 h-5 mr-2" aria-hidden="true" />
                     Contact Me
                   </a>
-                </Button>
+                </Button> */}
                 <Button
                   variant="outline"
                   className="border-white/20 text-white hover:bg-white/10 rounded-full px-8 py-6 text-lg bg-transparent"
+                  asChild
                 >
-                  View Resume
+                  <a
+                    href="/src/assets/resume/Muzakkir(2025-v1)%20-%20Resume_Template.docx.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="View Resume PDF"
+                  >
+                    View Resume
+                  </a>
                 </Button>
               </motion.div>
             </div>
